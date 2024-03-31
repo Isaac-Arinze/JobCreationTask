@@ -19,7 +19,7 @@ public class JobServiceImpl implements JobService {
         this.jobRepository = jobRepository;
     }
 
-    private Long nextId = 1L;
+//    private Long nextId = 1L;
 
     @Override
     public List<Job> findAll() {
@@ -28,7 +28,7 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public void createJob(Job job) {
-        job.setId(nextId++);
+//        job.setId(nextId++);
         jobRepository.save(job);
     }
 
@@ -39,14 +39,25 @@ public class JobServiceImpl implements JobService {
 
     @Override
     public boolean deleteJobsById(Long id) {
+            if (jobRepository.existsById(id)){
+                jobRepository.deleteById(id);
+                return true;
+            }
+            else {
+                return false;
+            }
 
-        try {
-            jobRepository.deleteById(id);
-            return true;
-        } catch (Exception exception) {
-            System.out.println(exception.getMessage());
-        }
-        return false;
+
+
+//        Job isDeleted = jobRepository.deleteById(id);
+
+//        try {
+//            jobRepository.deleteById(id);
+//            return true;
+//        } catch (Exception exception) {
+//            System.out.println(exception.getMessage());
+//        }
+//        return false;
     }
 
     @Override
@@ -61,6 +72,8 @@ public class JobServiceImpl implements JobService {
             job.setMinSalary(updateJob.getMinSalary());
             job. setMaxSalary(updateJob.getMaxSalary());
             job.setLocation(updateJob.getLocation());
+
+            jobRepository.save(job);
 
             return true;
         }
