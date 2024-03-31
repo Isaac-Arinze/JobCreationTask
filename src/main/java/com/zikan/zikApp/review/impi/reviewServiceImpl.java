@@ -74,6 +74,7 @@ public class reviewServiceImpl implements ReviewService {
             Review review = reviewRepository.findById(reviewId).orElse(null);
             Company company = review.getCompany();
             company.getReviews().remove(review);
+            review.setCompany(null); // to complete remove traces of company and review
             companyService.updateCompanies(companyId, company);
             reviewRepository.deleteById(reviewId);
             return true;
