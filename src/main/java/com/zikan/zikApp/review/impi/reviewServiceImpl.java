@@ -53,11 +53,11 @@ public class reviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public boolean updateReview(Long companyId, Long reviewId, Review updatedReview) {
+    public boolean updateReview(Long companyId, Long reviewsId, Review updatedReview) {
 
         if (companyService.getCompanyById(companyId) != null){
             updatedReview.setCompany(companyService.getCompanyById(companyId));
-            updatedReview.setId(reviewId);
+            updatedReview.setId(reviewsId);
             reviewRepository.save(updatedReview);
             return true;
         }
