@@ -3,7 +3,8 @@ package com.zikan.zikApp.review;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.zikan.zikApp.company.Company;
-import jakarta.persistence.*;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "Review")

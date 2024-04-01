@@ -5,8 +5,6 @@ import com.zikan.zikApp.company.CompanyService;
 import com.zikan.zikApp.review.Review;
 import com.zikan.zikApp.review.ReviewRepository;
 import com.zikan.zikApp.review.ReviewService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,8 +14,6 @@ public class reviewServiceImpl implements ReviewService {
     private final ReviewRepository reviewRepository;
 
     private final CompanyService companyService;
-
-
 
     public reviewServiceImpl(ReviewRepository reviewRepository, CompanyService companyService) {
         this.reviewRepository = reviewRepository;
@@ -41,7 +37,6 @@ public class reviewServiceImpl implements ReviewService {
         List<Review> reviews =  reviewRepository.findByCompanyId(companyId);
         return reviews;
     }
-
     @Override
     public Review getReview(Long companyId, Long reviewId) {
 
