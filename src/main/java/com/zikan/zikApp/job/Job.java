@@ -3,14 +3,15 @@ package com.zikan.zikApp.job;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.zikan.zikApp.company.Company;
-import jakarta.persistence.*;
+
+import javax.persistence.*;
 
 @Entity
-@Table (name = "job")
+@Table(name = "job")
 public class Job {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long id;
     private String title;

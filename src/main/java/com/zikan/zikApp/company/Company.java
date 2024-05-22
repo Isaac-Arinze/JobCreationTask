@@ -3,16 +3,16 @@ package com.zikan.zikApp.company;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.zikan.zikApp.job.Job;
 import com.zikan.zikApp.review.Review;
-import jakarta.persistence.*;
 
+import javax.persistence.*;
 import java.util.List;
 
 
 @Entity
-@Table (name = "company")
+@Table(name = "company")
 public class Company {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long id;
     private String name;
@@ -20,7 +20,7 @@ public class Company {
 
 //    we need to map the company to jobs
     @JsonIgnore
-    @OneToMany (mappedBy = "company")
+    @OneToMany(mappedBy = "company")
     private List<Job> jobs;
 
     @JsonIgnore
