@@ -1,6 +1,16 @@
 package com.zikan.zikApp.job;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.zikan.zikApp.company.Company;
+import jakarta.persistence.*;
+
+@Entity
+@Table (name = "job")
 public class Job {
+
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
 
     private Long id;
     private String title;
@@ -8,6 +18,10 @@ public class Job {
     private String minSalary;
     private String maxSalary;
     private String location;
+
+    @JoinColumn(name = "company_id")
+    @ManyToOne
+    private Company company;
 
     public Job(Long id, String title, String description, String minSalary, String maxSalary, String location) {
         this.id = id;
@@ -17,6 +31,16 @@ public class Job {
         this.maxSalary = maxSalary;
         this.location = location;
     }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    public Job (){}
 
     public Long getId() {
        return id;
