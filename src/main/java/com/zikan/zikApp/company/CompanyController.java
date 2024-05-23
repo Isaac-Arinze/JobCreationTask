@@ -11,7 +11,8 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping (value = "/v1/api/companies")
-public class CompanyController {
+public class
+CompanyController {
 
     private final CompanyService companyService;
 
